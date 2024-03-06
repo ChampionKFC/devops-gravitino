@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: gravitino-postgres
+  labels:
+    app: gravitino-postgres
+spec:
+  selector:
+    app: gravitino-postgres
+  ports:
+    - protocol: TCP
+      port: 5432
+      targetPort: 5432
