@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gravitino-backend-deployment
+  labels:
+    app: gravitino-backend
+spec:
+  replicas: 1
+  revisionHistoryLimit: 0
+  selector:
+    matchLabels:
+      app: gravitino-backend
+  template:
+    metadata:
+      labels:
+        app: gravitino-backend
+    spec:
+      imagePullSecrets:
+        - name: dockerhub-registry-secret
+      containers:
+        - name: gravitino-backend
+          image: del98/gravitino_backend:dev
+          imagePullPolicy: IfNotPresent
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gravitino-postgres
+  labels:
+    app: gravitino-postgres
+spec:
+  revisionHistoryLimit: 0
+  selector:
+    matchLabels:
+      app: gravitino-postgres
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: gravitino-postgres
+    spec:
+      imagePullSecrets:
+        - name: dockerhub-registry-secret
+      containers:
+        - name: gravitino-postgres
+          image: del98/gravitino_postgres:prod
+          imagePullPolicy: IfNotPresent
+          ports:
+          - containerPort: 5432
+          
