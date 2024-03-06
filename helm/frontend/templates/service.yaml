@@ -6,8 +6,9 @@ metadata:
     app: gravitino-frontend
 spec:
   ports:
-    - port: 3001
+    - port: 80
       targetPort: 3001
       protocol: TCP
+  type: LoadBalancer
   selector:
     app: gravitino-frontend
