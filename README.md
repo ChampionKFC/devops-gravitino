@@ -1,2 +1,1 @@
-# devops-gravitino
-# devops-gravitino
+# Тестовый workflow
