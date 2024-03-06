@@ -6,7 +6,7 @@ metadata:
     app: gravitino-frontend
 spec:
   ports:
-    - port: 80
+    - port: 3001
       targetPort: 3001
       protocol: TCP
   type: ClusterIP
