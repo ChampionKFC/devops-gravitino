@@ -21,6 +21,8 @@ spec:
         - name: gravitino-backend
           image: del98/gravitino_backend:dev
           imagePullPolicy: IfNotPresent
+          ports:
+          - containerPort: 8181
 ---
 
 apiVersion: apps/v1
