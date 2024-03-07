@@ -4,7 +4,7 @@ RUN apk add xdg-utils && rm -rf /etc/apk/cache
 
 WORKDIR /app
 
-COPY frontend/frontend/ /app
+COPY . /app
 
 RUN npm install -g npm@10.2.5 && \
     npm install && \
