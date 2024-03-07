@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gravitino-frontend-deployment
+  labels:
+    app: gravitino-frontend
+spec:
+  replicas: 1
+  revisionHistoryLimit: 0
+  selector:
+    matchLabels:
+      app: gravitino-frontend
+  template:
+    metadata:
+      labels:
+        app: gravitino-frontend
+    spec:
+      imagePullSecrets:
+        - name: dockerhub-registry-secret
+      containers:
+        - name: gravitino-frontend
+          image: del98/gravitino_frontend_main:{$TAG}
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 3001
