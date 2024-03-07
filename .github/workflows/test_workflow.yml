@@ -1,13 +1,34 @@
-name: Test Workflow
+name: Update Deployment Workflow
+
 
 on:
   workflow_dispatch:
+    inputs:
+      imageTag:
+        description: 'Docker Image Tag'
+        required: true
 
 jobs:
-  test:
+  update-deployment:
     runs-on: ubuntu-latest
-    
     steps:
-      - name: Print a message
-        run: echo "This is a test workflow triggered by another workflow."
+      - name: Checkout code
+        uses: actions/checkout@v4
 
+      - name: Setup environment variable for image tag
+        run: echo "IMAGE_TAG=${{ github.event.inputs.imageTag }}" >> $GITHUB_ENV
+
+      - name: Update deployment.yaml with the new image tag
+        run: |
+          envsubst < helm/template/frontend_deployment.yaml.template > helm/frontend/templates/deployment.yaml
+
+      - name: Configure Git
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+
+      - name: Commit and Push the updated deployment.yaml
+        run: |
+          git add helm/frontend/templates/deployment.yaml
+          git commit -m "Update deployment.yaml, change container image tag to ${{ github.event.inputs.imageTag }}"
+          git push
