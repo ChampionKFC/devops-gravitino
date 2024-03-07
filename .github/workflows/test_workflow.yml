@@ -18,6 +18,9 @@ jobs:
       - name: Setup environment variable for image tag
         run: export IMAGE_TAG=${{ github.event.inputs.imageTag }}
 
+      - name: Check env
+        run: echo $IMAGE_TAG
+
       - name: Update deployment.yaml with the new image tag
         run: |
           envsubst < helm/template/frontend_deployment.yaml.template > helm/frontend/templates/deployment.yaml
