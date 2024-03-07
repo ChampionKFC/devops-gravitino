@@ -19,7 +19,7 @@ spec:
         - name: dockerhub-registry-secret
       containers:
         - name: gravitino-frontend
-          image: del98/gravitino_frontend_main:{/home/runner/work/_temp/_runner_file_commands/set_env_cebfb7da-a194-4cf5-b02d-650bef08c4d4}
+          image: del98/gravitino_frontend_main:
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 3001
