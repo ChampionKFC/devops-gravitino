@@ -4,7 +4,7 @@ FROM node:21.6.2-alpine
 WORKDIR /app
 
 # Копируем файлы и папки из ../repos/backend/backend/ в контейнер
-COPY backend/backend/ /app
+COPY . /app
 
 # Выполняем установку зависимостей и сборку проекта
 RUN npm install -g npm@10.2.5 && \
