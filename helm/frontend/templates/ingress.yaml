@@ -10,7 +10,7 @@ metadata:
     nginx.ingress.kubernetes.io/ssl-passthrough: "true"
 spec:
   rules:
-    - host: frontend.dev.gravitino.ru
+    - host: frontend.devopsim.com
       http:
         paths:
           - path: /
