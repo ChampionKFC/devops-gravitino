@@ -19,4 +19,4 @@ spec:
               service:
                 name: gravitino-frontend-service-dev
                 port:
-                  number: 3001                 
+                  name: https               
