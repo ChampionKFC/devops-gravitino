@@ -6,8 +6,7 @@ metadata:
     # Добавьте здесь необходимые аннотации для вашего Ingress контроллера
     # Например, если используете nginx-ingress:
     kubernetes.io/ingress.class: "nginx"
-    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
-    nginx.ingress.kubernetes.io/ssl-passthrough: "true"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
 spec:
   rules:
     - host: frontend.devopsim.com
