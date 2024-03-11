@@ -22,4 +22,4 @@ spec:
           image: del98/gravitino_frontend_main:f5f327a34372b0321fb438d891554ef71cb45709
           imagePullPolicy: IfNotPresent
           ports:
-            - containerPort: 3001
+            - containerPort: 80
