@@ -8,7 +8,7 @@ metadata:
     kubernetes.io/ingress.class: "nginx"
 spec:
   rules:
-    - host: frontend.gravitino.int
+    - host: devops.gravitino.ru
       http:
         paths:
           - path: /
