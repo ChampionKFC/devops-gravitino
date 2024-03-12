@@ -22,7 +22,7 @@ spec:
           image: del98/gravitino_backend_main:c91ed42edcb29c46ff9f41cfbedae89cf063374a
           imagePullPolicy: IfNotPresent
           ports:
-          - containerPort: 31900
+          - containerPort: 3100
 ---
 
 apiVersion: apps/v1
