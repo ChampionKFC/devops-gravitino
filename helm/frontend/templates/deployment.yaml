@@ -19,7 +19,7 @@ spec:
         - name: dockerhub-registry-secret
       containers:
         - name: gravitino-frontend
-          image: del98/gravitino_frontend_main:3a3f721031375b5e8820f35435195ec601a84ae5
+          image: del98/gravitino_frontend_main:fd0a973b4e40e6865794da8042e653b32ccd907a
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 3001
