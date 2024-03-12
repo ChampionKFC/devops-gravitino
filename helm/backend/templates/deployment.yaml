@@ -47,7 +47,7 @@ spec:
       containers:
         - name: gravitino-postgres
           image: del98/gravitino_postgres:prod
-          imagePullPolicy: IfNotPresent
+          imagePullPolicy: Always
           ports:
           - containerPort: 5432
           
