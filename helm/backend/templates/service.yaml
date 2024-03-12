@@ -11,3 +11,20 @@ spec:
     - protocol: TCP
       port: 5432
       targetPort: 5432
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: gravitino-backend-service-dev
+  labels:
+    app: gravitino-backend
+spec:
+  ports:
+    - port: 80
+      targetPort: 8181
+      protocol: TCP
+  type: ClusterIP    
+  selector:
+    app: gravitino-backend
