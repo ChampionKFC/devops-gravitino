@@ -14,4 +14,4 @@ RUN npm install -g npm@10.2.5 && \
 
 EXPOSE 31900
 # Команда для запуска приложения с помощью pm2
-CMD ["pm2-runtime", "start", "npm", "--", "run", "start:debug", "--name", "gravitino_prod"]
+CMD ["pm2-runtime", "start", "npm", "--", "run", "start:dev", "--name", "gravitino_prod"]
