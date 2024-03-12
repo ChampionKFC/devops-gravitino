@@ -1,0 +1,38 @@
+name: Update Deployment Workflow
+
+
+on:
+  workflow_dispatch:
+    inputs:
+      imageTag:
+        description: 'Docker Image Tag'
+        required: true
+
+jobs:
+  update-deployment:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup environment variable for image tag
+        run: echo "IMAGE_TAG=${{ github.event.inputs.imageTag }}" >> $GITHUB_ENV
+
+      - name: Update deployment.yaml with the new image tag
+        run: |
+          export IMAGE_TAG=${{ github.event.inputs.imageTag }}
+          envsubst '${IMAGE_TAG}' < helm/template/backend_deployment.yaml.template > helm/backend/templates/deployment.yaml
+
+      - name: Check the updated deployment.yaml
+        run: cat helm/backend/templates/deployment.yaml  
+
+      - name: Configure Git
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+
+      - name: Commit and Push the updated deployment.yaml
+        run: |
+          git add helm/backend/templates/deployment.yaml
+          git commit -m "Update backend deployment.yaml, change container image tag to ${{ github.event.inputs.imageTag }}"
+          git push https://x-access-token:${{ secrets.MY_GITHUB_TOKEN }}@github.com/ChampionKFC/devops-gravitino.git
