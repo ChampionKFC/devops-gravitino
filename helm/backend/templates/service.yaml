@@ -23,7 +23,7 @@ metadata:
 spec:
   ports:
     - port: 80
-      targetPort: 8181
+      targetPort: 31900
       protocol: TCP
   type: ClusterIP    
   selector:
