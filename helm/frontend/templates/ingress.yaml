@@ -20,4 +20,4 @@ spec:
   tls:
     - hosts:
       - frontend.devops-prod.gravitino.ru
-      secretName: frontend-dev-tls
+      secretName: frontend-prod-tls
