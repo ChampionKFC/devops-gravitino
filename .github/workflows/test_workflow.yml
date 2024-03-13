@@ -44,7 +44,7 @@ jobs:
           rm argocd-linux-amd64
       
       - name: Login ArgoCD    
-        run: yes | argocd login argocd.gravitino.ru --username admin --password $ARGO_PASS --insecure --grpc-web
+        run: argocd login argocd.gravitino.ru --username admin --password ${{ secrets.ARGO_PASS }} --insecure --grpc-web
           
       - name: Sync ArgoCD
         run: argocd app sync gravitino-frontend-prod --insecure --grpc-web --assumeYes
