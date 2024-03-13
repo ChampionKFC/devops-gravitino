@@ -19,10 +19,10 @@ spec:
         - name: dockerhub-registry-secret
       containers:
         - name: gravitino-backend
-          image: del98/gravitino_backend_main:508463b8c279e56d80bf4169c8bdb71b38187eea
+          image: del98/gravitino_backend_main:bac93e0d9343c19679f4a59399f4f7060aa9a938
           imagePullPolicy: IfNotPresent
           ports:
-          - containerPort: 3000
+          - containerPort: 31900
 ---
 
 apiVersion: apps/v1
@@ -47,7 +47,7 @@ spec:
       containers:
         - name: gravitino-postgres
           image: del98/gravitino_postgres:prod
-          imagePullPolicy: Always
+          imagePullPolicy: IfNotPresent
           ports:
           - containerPort: 5432
           
