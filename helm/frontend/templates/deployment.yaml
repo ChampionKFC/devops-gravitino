@@ -17,6 +17,12 @@ spec:
     spec:
       imagePullSecrets:
         - name: dockerhub-registry-secret
+      initContainers:
+        - name: increase-fs-watchers
+          image: busybox
+          command: ["sysctl", "-w", "fs.inotify.max_user_watches=524288"]
+          securityContext:
+            privileged: true        
       containers:
         - name: gravitino-frontend
           image: del98/gravitino_frontend_main:1bff0cdca2a9a21aa3d4cbec2a147947b3a8eac2
