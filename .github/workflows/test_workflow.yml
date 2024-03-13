@@ -37,11 +37,14 @@ jobs:
           git commit -m "Update deployment.yaml, change container image tag to ${{ github.event.inputs.imageTag }}"
           git push https://x-access-token:${{ secrets.MY_GITHUB_TOKEN }}@github.com/ChampionKFC/devops-gravitino.git
 
-      - name: Sync ArgoCD
+      - name: Install ArgoCD
         run: |
           curl -sSL -o argocd-linux-amd64 https://github.com/argoproj/argo-cd/releases/latest/download/argocd-linux-amd64
           install -m 555 argocd-linux-amd64 /usr/local/bin/argocd
           rm argocd-linux-amd64
-          argocd login argocd.gravitino.ru --username admin --password $ARGO_PASS --insecure --grpc-web
-          argocd app sync gravitino-frontend-dev --insecure --grpc-web --assumeYes      
-
+      
+      - name: Login ArgoCD    
+        run: argocd login argocd.gravitino.ru --username admin --password ${{ secrets.ARGO_PASS }} --insecure --grpc-web
+          
+      - name: Sync ArgoCD
+        run: argocd app sync gravitino-frontend-dev --insecure --grpc-web --assumeYes
