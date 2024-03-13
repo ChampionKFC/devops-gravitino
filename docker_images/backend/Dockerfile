@@ -11,9 +11,9 @@ RUN npm install -g npm@10.2.5 && \
     npm install && \
     npm run build && \
     npm install -g pm2 && \
-    chmod +x /app/start.sh
+    chmod +x /app/startup.sh
 
 EXPOSE 3000
 # Команда для запуска приложения с помощью pm2
 #CMD ["pm2-runtime", "start", "npm", "--", "run", "start:dev", "--name", "gravitino_prod"]
-CMD ["/app/start.sh"]
+CMD ["/app/startup.sh"]
