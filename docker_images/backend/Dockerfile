@@ -10,7 +10,8 @@ COPY . /app
 RUN npm install -g npm@10.2.5 && \
     npm install && \
     npm run build && \
-    npm install -g pm2
+    npm install -g pm2 && \
+    npm run migrate:up
 
 EXPOSE 3000
 # Команда для запуска приложения с помощью pm2
